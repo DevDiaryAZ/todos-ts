@@ -1,38 +1,184 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --background-color: #f7f7f7;
+  --container-background: #ffffff;
+  --overlay-background: #f3f3f3;
+  --heading-color: #83D350;
+  --button-color: #83D350;
+  --button-hover-color: #74b045;
+  --border-color: #ccc;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --disabled-color: #ccc;
+  --grey-color: #4f4f4f;
+}
+
+body {
+  background-color: var(--background-color);
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.main{
+  max-width: 800px;
+  margin: 26vh auto;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--container-background);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  position: relative;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: -8px;
+  background-color: var(--overlay-background);
+  border-radius: 4px;
+  z-index: -1;
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  right: 16px;
+  bottom: -16px;
+  background-color: var(--overlay-background);
+  border-radius: 4px;
+  z-index: -2;
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+h1 {
   text-align: center;
+  color: var(--heading-color);
+  font-size: 50px;
+  margin-bottom: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input {
+  outline: none;
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.todo-list__btn-block {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.button.todo-list__btn {
+  width: fit-content;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo-list__btn:not(:last-child) {
+  width: fit-content;
+  margin-right: 10px;
+}
+
+.todo-list__btn-left {
+  color: var(--grey-color);
+}
+
+.todo-list__btn-left_hidden {
+  visibility: hidden;
+}
+
+.todo-list__status-btn-container {
+  display: flex;
+}
+
+.todo-list__status-btn:not(:last-child) {
+  margin-right: 10px;
+}
+
+.todo-item:first-child {
+  margin-top: 10px;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: var(--container-background);
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.todo-item__text {
+  text-decoration: none;
+}
+
+.completed .todo-item__text {
+  text-decoration: line-through;
+  color: var(--disabled-color);
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 30px;
+  display: inline-block;
+  position: relative;
+}
+
+.completed .custom-checkbox input+.checkmark {
+  background-color: var(--heading-color);
+  border: 2px solid #f5f5f5;
+}
+
+.checkmark::after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.completed .custom-checkbox input+.checkmark::after {
+  display: block;
+}
+
+.checkmark::after {
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
