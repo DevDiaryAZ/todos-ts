@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.css": "/todos-ts/static/css/main.bf9b534c.css",
+    "main.js": "/todos-ts/static/js/main.5df910c9.js",
+    "index.html": "/todos-ts/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.bf9b534c.css",
+    "static/js/main.5df910c9.js"
+  ]
+}
